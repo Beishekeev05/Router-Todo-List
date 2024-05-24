@@ -1,10 +1,10 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import Forma from "../../components/UI/Form";
 import { MyContext } from "../../context/Context";
 const Material = () => {
-	const { createHandlerValue, open, onClose } = useContext(MyContext);
+	const { createHandlerValue, open, onClose, data } = useContext(MyContext);
 
 	const onSubmit = (dataValue) => {
 		console.log(dataValue, "dataVa;ue");
@@ -19,7 +19,7 @@ const Material = () => {
 				</Button>
 			</Block>
 			{open ? (
-				<Forma onSubmit={onSubmit} onClose={onClose} />
+				<Forma data={data} onSubmit={onSubmit} onClose={onClose} />
 			) : (
 				<Ttext>
 					В правом верхнем углу есть кнопка нажмите на него что бы добавить

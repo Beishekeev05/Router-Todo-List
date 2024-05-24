@@ -55,8 +55,25 @@ const ContextProvaider = ({ children }) => {
 		setData((prevState) => [...prevState, param]);
 	};
 
+	const editModalHandler = (value) => {
+		const updateData = data.map((item) => {
+			return +item.id === +value.id
+				? {
+						...item,
+						img: value.img,
+						name: value.name,
+						gender: value.gender,
+						city: value.city,
+						age: value.age,
+				  }
+				: item;
+		});
+		setData(updateData);
+	};
+
 	return (
-		<MyContext.Provider value={{ createHandlerValue, onClose, data, open }}>
+		<MyContext.Provider
+			value={{ createHandlerValue, onClose, data, open, editModalHandler }}>
 			{children}
 		</MyContext.Provider>
 	);

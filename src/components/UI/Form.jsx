@@ -1,15 +1,24 @@
 import Button from "@mui/material/Button";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const Forma = ({ onSubmit, onClose }) => {
+const Forma = ({ onSubmit, onClose, data }) => {
 	const [name, setName] = useState("");
 	const [gender, setGender] = useState("");
 	const [city, setCity] = useState("");
 	const [age, setAge] = useState("");
 	const [img, setImg] = useState("");
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		setName(data.name);
+		setGender(data.gender);
+		setCity(data.city);
+		setAge(data.age);
+		setImg(data.img);
+	}, [data]);
+
 	const submitHandler = (e) => {
 		e.preventDefault();
 

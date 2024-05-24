@@ -31,11 +31,16 @@ export const router = createBrowserRouter([
 							{ index: true, element: <Students /> },
 							{
 								path: ":id/info",
-								element: <InfoStunedts />,
-							},
-							{
-								path: "edit",
-								element: <EditPage />,
+								children: [
+									{
+										index: true,
+										element: <InfoStunedts />,
+									},
+									{
+										path: "edit",
+										element: <EditPage />,
+									},
+								],
 							},
 						],
 					},
