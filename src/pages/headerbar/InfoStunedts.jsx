@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -12,18 +12,14 @@ const InfoStunedts = () => {
 	const { data } = useContext(MyContext);
 	const { id } = useParams();
 
-	console.log(data.img, "img");
-	console.log(id, "id");
-	
-	const student = data.find((item) => item.id === id);
-	console.log(student);
+	const student = data.find((item) => item.id === +id);
 	const navigate = useNavigate();
 
 	return (
 		<Container>
 			<Card sx={{ width: "100%", maxWidth: 500 }}>
 				<CardMedia
-					sx={{ height: 400 }}
+					sx={{ height: "480px" }}
 					image={student.img}
 					title={student.name}
 				/>
@@ -43,7 +39,10 @@ const InfoStunedts = () => {
 				</CardContent>
 				<CardActions>
 					<Button size="small" onClick={() => navigate(-1)}>
-						Go Back
+						Назад
+					</Button>
+					<Button size="small" onClick={() => navigate("edit")}>
+						Изменить
 					</Button>
 				</CardActions>
 			</Card>

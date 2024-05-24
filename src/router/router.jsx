@@ -9,6 +9,7 @@ import Anouncements from "../pages/Anouncements";
 import Notification from "../pages/Notification";
 import Schedule from "../pages/Schedule";
 import NotFoundPage from "../pages/404/NotFoundPage";
+import EditPage from "../pages/headerbar/EditPage";
 
 export const router = createBrowserRouter([
 	{
@@ -28,9 +29,17 @@ export const router = createBrowserRouter([
 						path: "students",
 						children: [
 							{ index: true, element: <Students /> },
-							{ path: ":id/info", element: <InfoStunedts /> },
+							{
+								path: ":id/info",
+								element: <InfoStunedts />,
+							},
+							{
+								path: "edit",
+								element: <EditPage />,
+							},
 						],
 					},
+
 					{ path: "ratings", element: <Ratings /> },
 				],
 			},
